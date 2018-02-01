@@ -1,0 +1,97 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {
+      "config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<feature name=\"MacAddressPlugin\"><param name=\"ios-package\" value=\"MacAddressPlugin\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"WifiWizard\"><param name=\"ios-package\" value=\"NXWWifiWizard\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"WifiWizard2\"><param name=\"ios-package\" value=\"WifiWizard2\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"AddressImpl\"><param name=\"ios-package\" value=\"AddressImpl\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      }
+    }
+  },
+  "installed_plugins": {
+    "com-badrit-macaddress": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "com.pylonproducts.wifiwizard": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "wifiwizard2": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-ip-mac-address": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [
+    {
+      "id": "com-badrit-macaddress.MacAddress",
+      "file": "plugins/com-badrit-macaddress/www/MacAddress.js",
+      "pluginId": "com-badrit-macaddress",
+      "clobbers": [
+        "window.MacAddress"
+      ]
+    },
+    {
+      "id": "com.pylonproducts.wifiwizard.WifiWizard",
+      "file": "plugins/com.pylonproducts.wifiwizard/www/WifiWizard.js",
+      "pluginId": "com.pylonproducts.wifiwizard",
+      "clobbers": [
+        "window.WifiWizard"
+      ]
+    },
+    {
+      "id": "es6-promise-plugin.Promise",
+      "file": "plugins/es6-promise-plugin/www/promise.js",
+      "pluginId": "es6-promise-plugin",
+      "runs": true
+    },
+    {
+      "id": "wifiwizard2.WifiWizard2",
+      "file": "plugins/wifiwizard2/www/WifiWizard2.js",
+      "pluginId": "wifiwizard2",
+      "clobbers": [
+        "window.WifiWizard2"
+      ]
+    },
+    {
+      "id": "cordova-plugin-ip-mac-address.addressimpl",
+      "file": "plugins/cordova-plugin-ip-mac-address/www/addressimpl.js",
+      "pluginId": "cordova-plugin-ip-mac-address",
+      "clobbers": [
+        "addressimpl"
+      ]
+    }
+  ],
+  "plugin_metadata": {
+    "com-badrit-macaddress": "0.2.1",
+    "com.pylonproducts.wifiwizard": "0.2.11",
+    "es6-promise-plugin": "4.1.0",
+    "wifiwizard2": "2.1.1",
+    "cordova-plugin-ip-mac-address": "1.0.1"
+  }
+}

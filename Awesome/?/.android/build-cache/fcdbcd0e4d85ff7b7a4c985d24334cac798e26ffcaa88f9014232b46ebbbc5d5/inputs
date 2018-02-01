@@ -1,0 +1,10 @@
+COMMAND=PREDEX_LIBRARY_TO_DEX_ARCHIVE
+FILE.path=/home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/android/app/build/intermediates/transforms/desugar/debug/19.jar
+FILE.hash=8d3f85750413a0709a79160bd7104802c62808ad7756e318f282cb27d34d79ac
+DX_VERSION=1.14
+JUMBO_MODE=true
+OPTIMIZE=true
+DEXER_TOOL=DX
+CACHE_KEY_VERSION=4
+MIN_SDK_VERSION=16
+IS_DEBUGGABLE=true

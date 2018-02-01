@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
+            "map": [
+                {
+                    "source": "/home/VICOMTECH/fzola/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/b6f24d12bbeed558908b28e3da7ffa70/res/values-h720dp-v13/values-h720dp-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
+                    }
+                }
+            ]
+        }
+    ]
+}

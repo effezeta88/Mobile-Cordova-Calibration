@@ -1,0 +1,212 @@
+12:50:10.639 [DEBUG] [org.gradle.launcher.daemon.bootstrap.DaemonMain] Assuming the daemon was started with following jvm opts: [-Xmx2048m, -Dfile.encoding=UTF-8, -Duser.country=US, -Duser.language=en, -Duser.variant]
+12:50:10.690 [INFO] [org.gradle.launcher.daemon.server.health.gc.GarbageCollectionMonitor] Unable to determine a garbage collection monitoring strategy for JVMStrategy{Oracle Corporation version 1.8.0_151}
+12:50:10.729 [INFO] [org.gradle.launcher.daemon.server.Daemon] start() called on daemon - DefaultDaemonContext[uid=530c46df-2d18-4a0e-9acc-69cb5d17f90c,javaHome=/usr/lib/jvm/java-8-openjdk-amd64,daemonRegistryDir=/home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/?/.gradle/daemon,pid=25678,idleTimeout=10800000,daemonOpts=-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country=US,-Duser.language=en,-Duser.variant]
+12:50:10.751 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface docker0
+12:50:10.751 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+12:50:10.751 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+12:50:10.752 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /172.17.0.1
+12:50:10.753 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote multicast interface docker0
+12:50:10.753 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface enp2s0
+12:50:10.754 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+12:50:10.754 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+12:50:10.754 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /fe80:0:0:0:eb4:2533:396c:7a8f%enp2s0
+12:50:10.755 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /192.168.30.14
+12:50:10.755 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote multicast interface enp2s0
+12:50:10.755 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface lo
+12:50:10.755 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? true
+12:50:10.756 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? false
+12:50:10.756 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback address /0:0:0:0:0:0:0:1%lo
+12:50:10.756 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback address /127.0.0.1
+12:50:10.759 [DEBUG] [org.gradle.internal.remote.internal.inet.TcpIncomingConnector] Listening on [8259c16b-af01-4154-98a3-5ef06cd988ec port:34679, addresses:[/0:0:0:0:0:0:0:1%lo, /127.0.0.1]].
+12:50:10.763 [DEBUG] [org.gradle.launcher.daemon.server.Daemon] Daemon starting at: Tue Jan 30 12:50:10 CET 2018, with address: [8259c16b-af01-4154-98a3-5ef06cd988ec port:34679, addresses:[/0:0:0:0:0:0:0:1%lo, /127.0.0.1]]
+12:50:10.764 [INFO] [org.gradle.launcher.daemon.server.DaemonRegistryUpdater] Advertising the daemon address to the clients: [8259c16b-af01-4154-98a3-5ef06cd988ec port:34679, addresses:[/0:0:0:0:0:0:0:1%lo, /127.0.0.1]]
+12:50:10.764 [DEBUG] [org.gradle.launcher.daemon.server.DaemonRegistryUpdater] Advertised daemon context: DefaultDaemonContext[uid=530c46df-2d18-4a0e-9acc-69cb5d17f90c,javaHome=/usr/lib/jvm/java-8-openjdk-amd64,daemonRegistryDir=/home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/?/.gradle/daemon,pid=25678,idleTimeout=10800000,daemonOpts=-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country=US,-Duser.language=en,-Duser.variant]
+12:50:10.765 [DEBUG] [org.gradle.launcher.daemon.registry.PersistentDaemonRegistry] Storing daemon address: [8259c16b-af01-4154-98a3-5ef06cd988ec port:34679, addresses:[/0:0:0:0:0:0:0:1%lo, /127.0.0.1]], context: DefaultDaemonContext[uid=530c46df-2d18-4a0e-9acc-69cb5d17f90c,javaHome=/usr/lib/jvm/java-8-openjdk-amd64,daemonRegistryDir=/home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/?/.gradle/daemon,pid=25678,idleTimeout=10800000,daemonOpts=-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country=US,-Duser.language=en,-Duser.variant]
+12:50:10.771 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on daemon addresses registry.
+12:50:10.773 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
+12:50:10.777 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+12:50:10.778 [LIFECYCLE] [org.gradle.launcher.daemon.server.Daemon] Daemon server started.
+12:50:10.779 [DEBUG] [org.gradle.launcher.daemon.bootstrap.DaemonStartupCommunication] Completed writing the daemon greeting. Closing streams...
+12:50:10.782 [DEBUG] [org.gradle.launcher.daemon.server.Daemon] stopOnExpiration() called on daemon
+12:50:10.784 [DEBUG] [org.gradle.launcher.daemon.server.Daemon] awaitExpiration() called on daemon
+12:50:10.784 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] daemon is running. Sleeping until state changes.
+12:50:10.795 [DEBUG] [org.gradle.internal.remote.internal.inet.TcpIncomingConnector] Accepted connection from /127.0.0.1:55312 to /127.0.0.1:34679.
+12:50:10.878 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 14: received class org.gradle.launcher.daemon.protocol.Build
+12:50:10.878 [DEBUG] [org.gradle.launcher.daemon.server.DefaultDaemonConnection] thread 14: Received non-IO message from client: Build{id=6d96fef4-a8bd-4d60-bd54-1b5e768bec72.1, currentDir=/home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome}
+12:50:10.879 [INFO] [org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler] Received command: Build{id=6d96fef4-a8bd-4d60-bd54-1b5e768bec72.1, currentDir=/home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome}.
+12:50:10.879 [DEBUG] [org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler] Starting executing command: Build{id=6d96fef4-a8bd-4d60-bd54-1b5e768bec72.1, currentDir=/home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome} with connection: socket connection from /127.0.0.1:34679 to /127.0.0.1:55312.
+12:50:10.887 [ERROR] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Command execution: started DaemonCommandExecution[command = Build{id=6d96fef4-a8bd-4d60-bd54-1b5e768bec72.1, currentDir=/home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome}, connection = DefaultDaemonConnection: socket connection from /127.0.0.1:34679 to /127.0.0.1:55312] after 0.0 minutes of idle
+12:50:10.888 [INFO] [org.gradle.launcher.daemon.server.DaemonRegistryUpdater] Marking the daemon as busy, address: [8259c16b-af01-4154-98a3-5ef06cd988ec port:34679, addresses:[/0:0:0:0:0:0:0:1%lo, /127.0.0.1]]
+12:50:10.888 [DEBUG] [org.gradle.launcher.daemon.registry.PersistentDaemonRegistry] Marking busy by address: [8259c16b-af01-4154-98a3-5ef06cd988ec port:34679, addresses:[/0:0:0:0:0:0:0:1%lo, /127.0.0.1]]
+12:50:10.889 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on daemon addresses registry.
+12:50:10.889 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
+12:50:10.890 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+12:50:10.891 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] resetting idle timer
+12:50:10.891 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] daemon is running. Sleeping until state changes.
+12:50:10.892 [INFO] [org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy] Daemon is about to start building Build{id=6d96fef4-a8bd-4d60-bd54-1b5e768bec72.1, currentDir=/home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome}. Dispatching build started information...
+12:50:10.892 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 16: dispatching class org.gradle.launcher.daemon.protocol.BuildStarted
+12:50:10.897 [DEBUG] [org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment] Configuring env variables: {PATH=/home/VICOMTECH/fzola/bin:/home/VICOMTECH/fzola/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/VICOMTECH/fzola/Android/Sdk/tools:/home/VICOMTECH/fzola/Android/Sdk/platform-tools:/home/VICOMTECH/fzola/Android/Sdk/build-tools:/home/VICOMTECH/fzola/Android/Sdk/tools/bin, XAUTHORITY=/home/VICOMTECH/fzola/.Xauthority, LC_MEASUREMENT=es_ES.UTF-8, XMODIFIERS=@im=ibus, LC_TELEPHONE=es_ES.UTF-8, XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop:/var/lib/snapd/desktop, GDMSESSION=ubuntu, MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path, LC_TIME=es_ES.UTF-8, GTK_IM_MODULE=ibus, DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-p87UsRSnEh, DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path, ANDROID_HOME=/home/VICOMTECH/fzola/Android/Sdk, XDG_CURRENT_DESKTOP=Unity, KRB5CCNAME=FILE:/tmp/krb5cc_12133, QT4_IM_MODULE=xim, UPSTART_SESSION=unix:abstract=/com/ubuntu/upstart-session/12133/3115, SESSION_MANAGER=local/CPU00212U.vicomtech.es:@/tmp/.ICE-unix/3847,unix/CPU00212U.vicomtech.es:/tmp/.ICE-unix/3847, QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1, LC_PAPER=es_ES.UTF-8, LOGNAME=fzola, PWD=/home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome, JOB=dbus, IM_CONFIG_PHASE=1, LANGUAGE=en_US, WINDOWID=62914570, LESSOPEN=| /usr/bin/lesspipe %s, SHELL=/bin/bash, LC_ADDRESS=es_ES.UTF-8, INSTANCE=, GTK2_MODULES=overlay-scrollbar, OLDPWD=/home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/android, GNOME_DESKTOP_SESSION_ID=this-is-deprecated, GTK_MODULES=gail:atk-bridge:unity-gtk-module, CLUTTER_IM_MODULE=xim, XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0, SESSIONTYPE=gnome-session, XDG_SESSION_DESKTOP=ubuntu, LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:, SHLVL=1, LC_IDENTIFICATION=es_ES.UTF-8, LESSCLOSE=/usr/bin/lesspipe %s %s, LC_MONETARY=es_ES.UTF-8, COMPIZ_CONFIG_PROFILE=ubuntu, QT_IM_MODULE=ibus, JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64, TERM=xterm-256color, XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/usr/share/upstart/xdg:/etc/xdg, LANG=en_US.UTF-8, XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0, GNOME_KEYRING_CONTROL=, XDG_SESSION_TYPE=x11, XDG_SESSION_ID=c2, DISPLAY=:0, LC_NAME=es_ES.UTF-8, TESSDATA_PREFIX=/usr/share/tesseract-ocr/, GDM_LANG=en_US, XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/fzola, DESKTOP_SESSION=ubuntu, GPG_AGENT_INFO=/home/VICOMTECH/fzola/.gnupg/S.gpg-agent:0:1, SESSION=ubuntu, USER=fzola, XDG_MENU_PREFIX=gnome-, QT_ACCESSIBILITY=1, VTE_VERSION=4205, LC_NUMERIC=es_ES.UTF-8, XDG_SEAT=seat0, SSH_AUTH_SOCK=/run/user/12133/keyring/ssh, QT_QPA_PLATFORMTHEME=appmenu-qt5, XDG_RUNTIME_DIR=/run/user/12133, XDG_VTNR=7, HOME=/home/VICOMTECH/fzola, GNOME_KEYRING_PID=}
+12:50:10.906 [DEBUG] [org.gradle.launcher.daemon.server.exec.LogToClient] About to start relaying all logs to the client via the connection.
+12:50:10.906 [INFO] [org.gradle.launcher.daemon.server.exec.LogToClient] The client will now receive all logging from the daemon (pid: 25678). The daemon log file: /home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/?/.gradle/daemon/4.1/daemon-25678.out.log
+12:50:10.907 [INFO] [org.gradle.launcher.daemon.server.exec.LogAndCheckHealth] Starting build in new daemon [memory: 1.9 GB]
+12:50:10.911 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] The daemon has started executing the build.
+12:50:10.912 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] Executing build with daemon context: DefaultDaemonContext[uid=530c46df-2d18-4a0e-9acc-69cb5d17f90c,javaHome=/usr/lib/jvm/java-8-openjdk-amd64,daemonRegistryDir=/home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/?/.gradle/daemon,pid=25678,idleTimeout=10800000,daemonOpts=-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country=US,-Duser.language=en,-Duser.variant]
+Download https://maven.google.com/com/android/tools/build/gradle/3.0.0/gradle-3.0.0.pom
+thread 14: client disconnection detected, canceling the build
+The daemon will cancel the build.
+Download https://maven.google.com/com/android/tools/build/gradle-core/3.0.0/gradle-core-3.0.0.pom
+Download https://maven.google.com/com/android/tools/build/builder/3.0.0/builder-3.0.0.pom
+Download https://maven.google.com/com/android/tools/lint/lint/26.0.0/lint-26.0.0.pom
+Download https://maven.google.com/com/android/tools/build/gradle-api/3.0.0/gradle-api-3.0.0.pom
+Download https://jcenter.bintray.com/org/jetbrains/kotlin/kotlin-stdlib/1.1.3-2/kotlin-stdlib-1.1.3-2.pom
+Download https://maven.google.com/com/android/tools/external/org-jetbrains/uast/26.0.0/uast-26.0.0.pom
+Download https://jcenter.bintray.com/com/android/tools/build/transform-api/2.0.0-deprecated-use-gradle-api/transform-api-2.0.0-deprecated-use-gradle-api.pom
+Download https://jcenter.bintray.com/org/ow2/asm/asm/5.1/asm-5.1.pom
+Download https://jcenter.bintray.com/org/ow2/asm/asm-analysis/5.1/asm-analysis-5.1.pom
+Download https://jcenter.bintray.com/org/ow2/asm/asm-commons/5.1/asm-commons-5.1.pom
+Download https://jcenter.bintray.com/org/ow2/asm/asm-parent/5.1/asm-parent-5.1.pom
+Download https://jcenter.bintray.com/org/ow2/ow2/1.3/ow2-1.3.pom
+Download https://jcenter.bintray.com/org/ow2/asm/asm-util/5.1/asm-util-5.1.pom
+Download https://jcenter.bintray.com/org/jacoco/org.jacoco.core/0.7.4.201502262128/org.jacoco.core-0.7.4.201502262128.pom
+Download https://jcenter.bintray.com/org/jacoco/org.jacoco.report/0.7.4.201502262128/org.jacoco.report-0.7.4.201502262128.pom
+Download https://jcenter.bintray.com/org/jacoco/org.jacoco.build/0.7.4.201502262128/org.jacoco.build-0.7.4.201502262128.pom
+Download https://jcenter.bintray.com/net/sf/jopt-simple/jopt-simple/4.9/jopt-simple-4.9.pom
+Download https://maven.google.com/com/android/databinding/compilerCommon/3.0.0/compilerCommon-3.0.0.pom
+Download https://jcenter.bintray.com/net/sf/proguard/proguard-gradle/5.3.3/proguard-gradle-5.3.3.pom
+Download https://jcenter.bintray.com/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+Download https://jcenter.bintray.com/com/google/protobuf/protobuf-java/3.0.0/protobuf-java-3.0.0.pom
+Download https://jcenter.bintray.com/net/sf/proguard/proguard-parent/5.3.3/proguard-parent-5.3.3.pom
+Download https://jcenter.bintray.com/com/google/protobuf/protobuf-parent/3.0.0/protobuf-parent-3.0.0.pom
+Download https://jcenter.bintray.com/com/google/google/1/google-1.pom
+Download https://maven.google.com/com/android/tools/sdk-common/26.0.0/sdk-common-26.0.0.pom
+Download https://maven.google.com/com/android/tools/sdklib/26.0.0/sdklib-26.0.0.pom
+Download https://maven.google.com/com/android/tools/build/builder-model/3.0.0/builder-model-3.0.0.pom
+Download https://maven.google.com/com/android/tools/build/builder-test-api/3.0.0/builder-test-api-3.0.0.pom
+Download https://maven.google.com/com/android/tools/build/manifest-merger/26.0.0/manifest-merger-26.0.0.pom
+Download https://maven.google.com/com/android/tools/ddms/ddmlib/26.0.0/ddmlib-26.0.0.pom
+Download https://maven.google.com/com/android/tools/common/26.0.0/common-26.0.0.pom
+Download https://maven.google.com/com/android/tools/analytics-library/protos/26.0.0/protos-26.0.0.pom
+Download https://jcenter.bintray.com/com/squareup/javawriter/2.5.0/javawriter-2.5.0.pom
+Download https://jcenter.bintray.com/org/bouncycastle/bcpkix-jdk15on/1.56/bcpkix-jdk15on-1.56.pom
+Download https://jcenter.bintray.com/org/bouncycastle/bcprov-jdk15on/1.56/bcprov-jdk15on-1.56.pom
+Download https://jcenter.bintray.com/org/ow2/asm/asm-tree/5.1/asm-tree-5.1.pom
+Download https://jcenter.bintray.com/it/unimi/dsi/fastutil/7.2.0/fastutil-7.2.0.pom
+Download https://jcenter.bintray.com/com/googlecode/json-simple/json-simple/1.1/json-simple-1.1.pom
+Download https://maven.google.com/com/android/tools/analytics-library/shared/26.0.0/shared-26.0.0.pom
+Download https://maven.google.com/com/android/tools/analytics-library/tracker/26.0.0/tracker-26.0.0.pom
+Download https://maven.google.com/com/android/tools/build/apksig/3.0.0/apksig-3.0.0.pom
+Download https://jcenter.bintray.com/org/eclipse/jdt/core/compiler/ecj/4.6.1/ecj-4.6.1.pom
+Download https://maven.google.com/com/android/tools/lint/lint-checks/26.0.0/lint-checks-26.0.0.pom
+Download https://jcenter.bintray.com/com/google/guava/guava/22.0/guava-22.0.pom
+Download https://jcenter.bintray.com/com/google/guava/guava-parent/22.0/guava-parent-22.0.pom
+Download https://jcenter.bintray.com/org/antlr/antlr4/4.5.3/antlr4-4.5.3.pom
+Download https://jcenter.bintray.com/commons-io/commons-io/2.4/commons-io-2.4.pom
+Download https://jcenter.bintray.com/com/googlecode/juniversalchardet/juniversalchardet/1.0.3/juniversalchardet-1.0.3.pom
+Download https://jcenter.bintray.com/com/android/tools/annotations/24.5.0/annotations-24.5.0.pom
+Download https://jcenter.bintray.com/org/antlr/antlr4-master/4.5.3/antlr4-master-4.5.3.pom
+Download https://jcenter.bintray.com/org/apache/commons/commons-parent/25/commons-parent-25.pom
+Download https://jcenter.bintray.com/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+Download https://jcenter.bintray.com/org/apache/apache/9/apache-9.pom
+Download https://maven.google.com/com/android/databinding/baseLibrary/3.0.0/baseLibrary-3.0.0.pom
+Download https://jcenter.bintray.com/org/jetbrains/annotations/13.0/annotations-13.0.pom
+Download https://jcenter.bintray.com/net/sf/proguard/proguard-base/5.3.3/proguard-base-5.3.3.pom
+Download https://jcenter.bintray.com/com/google/code/gson/gson/2.3/gson-2.3.pom
+Download https://jcenter.bintray.com/org/apache/commons/commons-compress/1.12/commons-compress-1.12.pom
+Download https://jcenter.bintray.com/org/apache/commons/commons-parent/39/commons-parent-39.pom
+Download https://jcenter.bintray.com/org/apache/apache/16/apache-16.pom
+Download https://maven.google.com/com/android/tools/dvlib/26.0.0/dvlib-26.0.0.pom
+Download https://maven.google.com/com/android/tools/repository/26.0.0/repository-26.0.0.pom
+Download https://maven.google.com/com/android/tools/layoutlib/layoutlib-api/26.0.0/layoutlib-api-26.0.0.pom
+Download https://jcenter.bintray.com/org/apache/httpcomponents/httpclient/4.2.6/httpclient-4.2.6.pom
+Download https://jcenter.bintray.com/org/apache/httpcomponents/httpcomponents-client/4.2.6/httpcomponents-client-4.2.6.pom
+Download https://jcenter.bintray.com/org/apache/httpcomponents/httpmime/4.1/httpmime-4.1.pom
+Download https://jcenter.bintray.com/org/apache/httpcomponents/httpcomponents-client/4.1/httpcomponents-client-4.1.pom
+Download https://jcenter.bintray.com/org/apache/httpcomponents/project/7/project-7.pom
+Download https://jcenter.bintray.com/org/apache/apache/13/apache-13.pom
+Download https://jcenter.bintray.com/org/apache/httpcomponents/project/4.1.1/project-4.1.1.pom
+Download https://jcenter.bintray.com/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0.pom
+Download https://maven.google.com/com/android/tools/lint/lint-api/26.0.0/lint-api-26.0.0.pom
+Download https://jcenter.bintray.com/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.pom
+Download https://jcenter.bintray.com/org/codehaus/mojo/animal-sniffer-annotations/1.14/animal-sniffer-annotations-1.14.pom
+Download https://jcenter.bintray.com/com/google/j2objc/j2objc-annotations/1.1/j2objc-annotations-1.1.pom
+Download https://jcenter.bintray.com/com/google/errorprone/error_prone_annotations/2.0.18/error_prone_annotations-2.0.18.pom
+Download https://jcenter.bintray.com/org/codehaus/mojo/animal-sniffer-parent/1.14/animal-sniffer-parent-1.14.pom
+Download https://jcenter.bintray.com/com/google/errorprone/error_prone_parent/2.0.18/error_prone_parent-2.0.18.pom
+Download https://jcenter.bintray.com/org/codehaus/mojo/mojo-parent/34/mojo-parent-34.pom
+Download https://jcenter.bintray.com/org/codehaus/codehaus-parent/4/codehaus-parent-4.pom
+Download https://jcenter.bintray.com/com/intellij/annotations/12.0/annotations-12.0.pom
+Download https://jcenter.bintray.com/com/google/jimfs/jimfs/1.1/jimfs-1.1.pom
+Download https://jcenter.bintray.com/com/google/jimfs/jimfs-parent/1.1/jimfs-parent-1.1.pom
+Download https://jcenter.bintray.com/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.pom
+Download https://jcenter.bintray.com/commons-codec/commons-codec/1.6/commons-codec-1.6.pom
+Download https://jcenter.bintray.com/org/apache/httpcomponents/httpcore/4.2.5/httpcore-4.2.5.pom
+Download https://jcenter.bintray.com/org/apache/httpcomponents/httpcomponents-core/4.2.5/httpcomponents-core-4.2.5.pom
+Download https://jcenter.bintray.com/org/apache/commons/commons-parent/5/commons-parent-5.pom
+Download https://jcenter.bintray.com/org/apache/commons/commons-parent/22/commons-parent-22.pom
+Download https://jcenter.bintray.com/org/apache/apache/4/apache-4.pom
+Unable to execute command Build{id=6d96fef4-a8bd-4d60-bd54-1b5e768bec72.1, currentDir=/home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome} from socket connection from /127.0.0.1:34679 to /127.0.0.1:55312. Dispatching the failure to the daemon client
+org.gradle.internal.remote.internal.MessageIOException: Could not write message Failure[value=org.gradle.launcher.daemon.server.api.DaemonStoppedException: Gradle build daemon has been stopped: cancel requested but timed out] to '/127.0.0.1:55312'.
+	at org.gradle.internal.remote.internal.inet.SocketConnection.dispatch(SocketConnection.java:124)
+	at org.gradle.launcher.daemon.server.SynchronizedDispatchConnection.dispatch(SynchronizedDispatchConnection.java:51)
+	at org.gradle.launcher.daemon.server.DefaultDaemonConnection.completed(DefaultDaemonConnection.java:135)
+	at org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy.doBuild(StartBuildOrRespondWithBusy.java:59)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.ReturnResult.execute(ReturnResult.java:36)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.api.HandleReportStatus.execute(HandleReportStatus.java:33)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.HandleCancel.execute(HandleCancel.java:37)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.api.HandleStop.execute(HandleStop.java:45)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+	at org.gradle.launcher.daemon.server.exec.DaemonCommandExecuter.executeCommand(DaemonCommandExecuter.java:45)
+	at org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler$ConnectionWorker.handleCommand(DefaultIncomingConnectionHandler.java:160)
+	at org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler$ConnectionWorker.receiveAndHandleCommand(DefaultIncomingConnectionHandler.java:133)
+	at org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler$ConnectionWorker.run(DefaultIncomingConnectionHandler.java:121)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.esotericsoftware.kryo.KryoException: java.io.IOException: Broken pipe
+	at com.esotericsoftware.kryo.io.Output.flush(Output.java:156)
+	at com.esotericsoftware.kryo.io.Output.require(Output.java:134)
+	at com.esotericsoftware.kryo.io.Output.writeBytes(Output.java:219)
+	at org.gradle.internal.serialize.kryo.KryoBackedEncoder.writeBytes(KryoBackedEncoder.java:43)
+	at org.gradle.internal.serialize.AbstractEncoder$EncoderStream.write(AbstractEncoder.java:71)
+	at java.io.ObjectOutputStream$BlockDataOutputStream.drain(ObjectOutputStream.java:1877)
+	at java.io.ObjectOutputStream$BlockDataOutputStream.flush(ObjectOutputStream.java:1822)
+	at java.io.ObjectOutputStream.flush(ObjectOutputStream.java:719)
+	at org.gradle.internal.serialize.Message.send(Message.java:40)
+	at org.gradle.internal.serialize.BaseSerializerFactory$ThrowableSerializer.write(BaseSerializerFactory.java:244)
+	at org.gradle.internal.serialize.BaseSerializerFactory$ThrowableSerializer.write(BaseSerializerFactory.java:238)
+	at org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$FailureSerializer.write(DaemonMessageSerializer.java:81)
+	at org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$FailureSerializer.write(DaemonMessageSerializer.java:72)
+	at org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer.write(DefaultSerializerRegistry.java:150)
+	at org.gradle.internal.serialize.Serializers$StatefulSerializerAdapter$2.write(Serializers.java:46)
+	at org.gradle.internal.remote.internal.inet.SocketConnection.dispatch(SocketConnection.java:116)
+	... 23 more
+Caused by: java.io.IOException: Broken pipe
+	at sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+	at sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:47)
+	at sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:93)
+	at sun.nio.ch.IOUtil.write(IOUtil.java:51)
+	at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:471)
+	at org.gradle.internal.remote.internal.inet.SocketConnection$SocketOutputStream.writeWithNonBlockingRetry(SocketConnection.java:272)
+	at org.gradle.internal.remote.internal.inet.SocketConnection$SocketOutputStream.writeBufferToChannel(SocketConnection.java:260)
+	at org.gradle.internal.remote.internal.inet.SocketConnection$SocketOutputStream.write(SocketConnection.java:246)
+	at com.esotericsoftware.kryo.io.Output.flush(Output.java:154)
+	... 38 more
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Services for Gradle user home directory '/home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/?/.gradle' have not been released.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+* Get more help at https://help.gradle.org
+Daemon vm is shutting down... The daemon has exited normally or was terminated in response to a user interrupt.
