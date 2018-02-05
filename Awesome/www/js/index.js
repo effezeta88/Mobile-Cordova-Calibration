@@ -17,9 +17,9 @@
  * under the License.
  */
 
-addr_server_insert="http://35.156.230.193/db_insert.php";
-addr_server_select="http://35.156.230.193/db_select.php";
-addr_server_update="http://35.156.230.193/db_update.php";
+addr_server_insert="http://xx/db_insert.php";
+addr_server_select="http://xx/db_select.php";
+addr_server_update="http://xx/db_update.php";
 
 com_name=document.getElementById("com_name");
 area_name=document.getElementById("area_name");
