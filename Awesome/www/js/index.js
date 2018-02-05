@@ -17,9 +17,9 @@
  * under the License.
  */
 
-addr_server_insert="http://ip_add/db_insert.php";
-addr_server_select="http://ip_add/db_select.php";
-addr_server_update="http://ip_add/db_update.php";
+addr_server_insert="http://35.156.230.193/db_insert.php";
+addr_server_select="http://35.156.230.193/db_select.php";
+addr_server_update="http://35.156.230.193/db_update.php";
 
 com_name=document.getElementById("com_name");
 area_name=document.getElementById("area_name");
@@ -51,7 +51,8 @@ function onDeviceReady() {
 		{
 		    title: "Ok",
 		    onclick: function(el){
-		        cordova.plugins.diagnostic.isLocationEnabled(successCallback, errorCallback);
+                      //console.log("quattro");
+                      successCallback(false);
 		    },
 		    cls: "js-dialog-close",
 		    removeOnClose: true
@@ -60,7 +61,7 @@ function onDeviceReady() {
 	});
 }
 function successCallback(res){
- 	loc_enabled=res;	  
+ 	loc_enabled=res;
 }
 function errorCallback(err){
   	loc_enabled=false;
@@ -201,7 +202,8 @@ function onError_GEO(error) {
 }
 
 function _startLocalisation(){
-	cordova.plugins.diagnostic.isLocationEnabled(successCallback, errorCallback);
+    successCallback(false);
+    //cordova.plugins.diagnostic.isLocationEnabled(successCallback, errorCallback);
 	if(complete){
 		if(area_name.value!="" && tmac.value!=""){
 			wrapper.style.visibility = "visible";
