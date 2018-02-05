@@ -27,7 +27,7 @@ INJECTED from /home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/an
 INJECTED from /home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/android/app/src/main/AndroidManifest.xml:2:1-32:12
 INJECTED from /home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/android/app/src/main/AndroidManifest.xml:2:1-32:12
 	package
-		ADDED from /home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/android/app/src/main/AndroidManifest.xml:2:102-135
+		ADDED from /home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/android/app/src/main/AndroidManifest.xml:2:102-145
 		INJECTED from /home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/android/app/src/main/AndroidManifest.xml
 		INJECTED from /home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/android/app/src/main/AndroidManifest.xml
 	android:versionName
@@ -37,7 +37,7 @@ INJECTED from /home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/an
 	android:hardwareAccelerated
 		ADDED from /home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/android/app/src/main/AndroidManifest.xml:2:11-45
 	xmlns:android
-		ADDED from /home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/android/app/src/main/AndroidManifest.xml:2:136-194
+		ADDED from /home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/android/app/src/main/AndroidManifest.xml:2:146-204
 	android:versionCode
 		ADDED from /home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/android/app/src/main/AndroidManifest.xml:2:46-73
 		INJECTED from /home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/android/app/src/main/AndroidManifest.xml
@@ -106,7 +106,7 @@ MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/VICOMTECH/fzola/.gradle
 		ADDED from /home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/android/app/src/main/AndroidManifest.xml:5:18-52
 	android:icon
 		ADDED from /home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/android/app/src/main/AndroidManifest.xml:5:53-80
-activity#io.cordova.hellocordova.MainActivity
+activity#io.cordova.localisation.vicomtech.MainActivity
 ADDED from /home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/android/app/src/main/AndroidManifest.xml:6:9-11:20
 	android:screenOrientation
 		ADDED from /home/VICOMTECH/fzola/Desktop/Brick&Click/App/Awesome/platforms/android/app/src/main/AndroidManifest.xml:6:194-230

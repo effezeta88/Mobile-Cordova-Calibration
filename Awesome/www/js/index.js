@@ -17,9 +17,12 @@
  * under the License.
  */
 
-addr_server_insert="http://xx/db_insert.php";
-addr_server_select="http://xx/db_select.php";
-addr_server_update="http://xx/db_update.php";
+addr_server_insert="http://ip_addr/db_insert.php";
+addr_server_select="http://ip_addr/db_select.php";
+addr_server_update="http://ip_addr/db_update.php";
+
+json_add=[];
+json_add_new=[];
 
 com_name=document.getElementById("com_name");
 area_name=document.getElementById("area_name");
@@ -36,6 +39,7 @@ db_returned=[];
 gps_=[];
 scan_time=15000;
 scan_num=0;
+id_area=-1;
 var loc_enabled;
 //index_change=-1;
 wrapper.style.visibility = "hidden"; 
@@ -132,6 +136,12 @@ function uploadDB(){
   		 dataType: "json",
 	 	 success : function(d){
 			coreToasts.create('Data stored',null,3000);
+			if(json_add_new.length>0)
+				json_envio = create_json("1",json_add_new);
+
+			if(json_add.length>0)
+				json_envio = create_json("2",json_add);
+			console.log(json_envio);
 			empty_array();
 			resetAll();
 			remove_bar_load();
@@ -146,9 +156,22 @@ function uploadDB(){
 	});
 
 }
+function create_json(x,json_add){
+	var strg;
+	strg='{ "accionDB" : '+x+', "zonas" :';
+	strg=strg + JSON.stringify(json_add);
+	strg=strg+"}";
+	return strg;
+}
 function empty_array(){
+	while(json_add.length > 0) {
+    		json_add.pop();
+	}
+	while(json_add_new.length > 0) {
+    		json_add_new.pop();
+	}
 	while(obj_tosave.length > 0) {
-    	obj_tosave.pop();
+    		obj_tosave.pop();
 	}
 }
 function _stopLocalisation(){
@@ -158,9 +181,9 @@ function _stopLocalisation(){
 	wrapper_mod.style.visibility = "hidden"; 
 }
 function _fillList(gps_){
-	obj_tosave.push({"company":com_name.textContent,"area":area_name.value,"tmac":tmac.value,"latitude":gps_[0],"longitude":gps_[1],"timestamp":tt,"num":scan_num});
+	obj_tosave.push({"company":com_name.textContent,"area":area_name.value,"idarea":id_area,"tmac":tmac.value,"latitude":gps_[0],"longitude":gps_[1],"timestamp":tt,"num":scan_num});
 	//file_tosave.push({"company":com_name.textContent,"area":area_name.value,"tmac":tmac.value,"latitude":gps_[0],"longitude":gps_[1],"timestamp":tt,"num":num.value});
-	console.log({"company":com_name.textContent,"area":area_name.value,"tmac":tmac.value,"latitude":gps_[0],"longitude":gps_[1],"timestamp":tt,"num":scan_num});
+	console.log({"company":com_name.textContent,"area":area_name.value,"idarea":id_area,"tmac":tmac.value,"latitude":gps_[0],"longitude":gps_[1],"timestamp":tt,"num":scan_num});
 	remove_bar_load();
 	var div = document.createElement('div');
 	div.setAttribute('class','div-example');
@@ -234,20 +257,64 @@ function get_scanNumber(scan_num){
 		var form_data = new FormData();
 		form_data.append('funct','getjustnumber');		
 		form_data.append('c_name',com_name.textContent);
+		form_data.append('area_name',area_name.value);
 		$.ajax({
 		 type: "POST",
 		 url: addr_server_select,
 		 data: form_data,
 		 cache: false,
 		 processData: false,
-    	 contentType: false,
+    	 	contentType: false,
   		 dataType: "json",
 	 	 success : function(result){
 			//num=getMax(result,'scantime');
 			if((result[0]['max(scantime)'])!=""){
-				swap(result[0]['max(scantime)']);
+				swap_scan(result[0]['max(scantime)']);
 			}
-			incrementa();
+			incrementa(scan_num);
+			get_Areaid();
+	  	 },
+	  	 error: function(d){
+			coreToasts.create('Error, data not retrieved',null,3000);
+	  	 }
+	});
+}
+
+function get_Areaid(){
+		//upload(fileEntry.toURL());
+		var form_data = new FormData();
+		form_data.append('funct','getareaname');		
+		form_data.append('c_name',com_name.textContent);
+		$.ajax({
+		 type: "POST",
+		 url: addr_server_select,
+		 data: form_data,
+		 cache: false,
+		 processData: false,
+    	 	 contentType: false,
+  		 dataType: "json",
+	 	 success : function(result){
+			id_area=-1;
+			isnewarea=false;
+			for (var i=0 ; i<result.length ; i++) {
+				//console.log(result[i]['Area']+" "+result[i]['idArea']);
+				if((result[i]['Area'])==area_name.value){
+					swap_id(result[i]['idArea']);
+					//console.log("swap "+id_area);
+				}
+			}
+			if(id_area==-1){
+				id_area=getArea(result,'idArea');
+				isnewarea=true;
+				//console.log("noswap "+id_area);		
+			}
+			if(isnewarea){
+   	 	             json_add_new.push({"company":com_name.textContent,"area":area_name.value,"idarea":id_area,"mac":tmac.value});			
+			}
+			else{    			
+			      json_add.push({"company":com_name.textContent,"area":area_name.value,"idarea":id_area,"mac":tmac.value});
+			}
+			//console.log("newarea "+id_area);		
 			localisation();
 	  	 },
 	  	 error: function(d){
@@ -255,6 +322,7 @@ function get_scanNumber(scan_num){
 	  	 }
 	});
 }
+
 function _clear(){
 	resetAll();
 	remove_bar_load();
@@ -270,11 +338,14 @@ function _clear(){
 function onError_GEO_err(){
 	coreToasts.create('Error with geolocalization',null,3000);
 }
-function incrementa(){
+function incrementa(scan_num){
 	scan_num=scan_num+1;
 }
-function swap(x){
+function swap_scan(x){
 	scan_num=parseInt(x);
+}
+function swap_id(x){
+	id_area=parseInt(x);
 }
 function localisation(){
 	tt= new Date()
@@ -291,13 +362,22 @@ function localisation(){
 		}
 	},scan_time);
 }
-function getArea(arr) {
-    var max=0;
-    for (var i=0 ; i<arr.length ; i++) {
-	if (parseInt(arr[i][prop]) > max)
-	    max = parseInt(arr[i][prop]);
+function getArea(arr,prop) {
+    var idx=0;
+    found=false;
+    while(!found){
+
+	found=true;
+	for (var i=0 ; i<arr.length ; i++) {
+		if(arr[i][prop]==idx){
+			found=false;
+		}
+	}
+	if(!found){
+		idx=idx+1;
+	}
     }
-    return max;
+    return idx;
 }
 function _showArea(){
 	remove_bar_load();
@@ -330,20 +410,20 @@ function _showArea(){
 			}
 			else{
 				for (var i=0 ; i<result.length ; i++) {
-					obj_tomodify.push({"area":result[i]['Area'],"company":result[i]['Company'],"idli":'li'+i});
+					obj_tomodify.push({"idarea":result[i]['idArea'],"area":result[i]['Area'],"company":result[i]['Company'],"idli":'li'+i});
 	 				var li = document.createElement('li');
 	   				li.setAttribute('class','list-item with-second-label');
 	 				var span = document.createElement('span');
 	   				span.setAttribute('class','label');
-					span.innerHTML= "Area: "+result[i]['Area']
+					span.innerHTML= result[i]['idArea']+" "+result[i]['Area']
 	 				var secspan = document.createElement('span');
 					secspan.innerHTML= result[i]['Company']
 	   				secspan.setAttribute('class','second-label');
 	   				li.id='li'+i;
-    				li.appendChild(span);
-	    			li.appendChild(secspan);
-	    			li.addEventListener('click', function(){
-						remove_select();	    				
+    					li.appendChild(span);
+	    				li.appendChild(secspan);
+	    				li.addEventListener('click', function(){
+					remove_select();	    				
 	    				index_change=$("#"+this.id).index();
 	    				document.getElementById(this.id).classList.add("list-selected");
 	    			});
@@ -374,6 +454,7 @@ function resetAll(){
 	}
 }
 function _deleteArea(){
+	json_del=[];
 	if(index_change>=0){
     	coreDialog.create({    
 			title: 'Are you sure to delete "'+obj_tomodify[index_change]['area']+'" ?',
@@ -381,6 +462,7 @@ function _deleteArea(){
 			{
 			    	title: "Ok",
 			    	onclick: function(el){
+				json_del.push({"company":obj_tomodify[index_change]['company'],"area":obj_tomodify[index_change]['area'], "idarea":obj_tomodify[index_change]['idarea']});
 					deleteOnDB(obj_tomodify[index_change]['area'],obj_tomodify[index_change]['company']);
 				},
 		   		cls: "js-dialog-close",
@@ -399,6 +481,7 @@ function _deleteArea(){
 
 }
 function _renameArea(){
+	json_ren=[];
 	if(index_change>=0){
 	    coreDialog.create({    
 			title: 'New name for "'+obj_tomodify[index_change]['area']+'":<br><input type="text" id="new_name">',
@@ -408,6 +491,7 @@ function _renameArea(){
 			    onclick: function(el){
 					new_name=document.getElementById("new_name").value;
 					if (new_name!=""){
+						json_ren.push({"company":obj_tomodify[index_change]['company'],"area":obj_tomodify[index_change]['area'], "idarea":obj_tomodify[index_change]['idarea'],"newname":new_name});
 						renameOnDB(new_name,obj_tomodify[index_change]['area'],obj_tomodify[index_change]['company']);
 					}
 			    },
@@ -441,6 +525,8 @@ function deleteOnDB(areaname,compname){
 	 dataType: "json",
  	 success: function(result){
 		coreToasts.create('Area Deleted',null,3000);
+		json_envio = create_json("4",json_del);
+		console.log(json_envio);
 		_showArea();
 	 },
 	 error: function(d){
@@ -472,6 +558,8 @@ function renameOnDB(newname,oldname,compname){
  	 success: function(result){
  	 	console.log(result);
 		coreToasts.create('Area Renamed',null,3000);
+		json_envio = create_json("3",json_ren);
+		console.log(json_envio);
 		_showArea();
 	 },
 	 error: function(error){
