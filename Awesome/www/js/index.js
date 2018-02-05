@@ -17,7 +17,10 @@
  * under the License.
  */
 
-addr_server="http:/localhost/";
+addr_server_insert="http://ip_add/db_insert.php";
+addr_server_select="http://ip_add/db_select.php";
+addr_server_update="http://ip_add/db_update.php";
+
 com_name=document.getElementById("com_name");
 area_name=document.getElementById("area_name");
 tmac=document.getElementById("tmac");
@@ -120,7 +123,7 @@ function uploadDB(){
 		//upload(fileEntry.toURL());
 		$.ajax({
 		 type: "POST",
-		 url:addr_server+"db_insert.php",
+		 url:addr_server_insert,
 		 data: form_data,
 		 cache: false,
 		 processData: false,
@@ -231,7 +234,7 @@ function get_scanNumber(scan_num){
 		form_data.append('c_name',com_name.textContent);
 		$.ajax({
 		 type: "POST",
-		 url: addr_server+"db_select.php",
+		 url: addr_server_select,
 		 data: form_data,
 		 cache: false,
 		 processData: false,
@@ -306,7 +309,7 @@ function _showArea(){
 	form_data.append('c_name',com_name.textContent);
 	$.ajax({
 		 type: "POST",
-		 url:addr_server+"db_select.php",
+		 url:addr_server_select,
 		 data: form_data,
 		 cache: false,
 		 processData: false,
@@ -428,7 +431,7 @@ function deleteOnDB(areaname,compname){
 	form_data.append('compname',compname);
 	$.ajax({
 	 type: "POST",
-	 url:addr_server+"db_update.php",
+	 url:addr_server_update,
 	 data: form_data,
 	 cache: false,
 	 processData: false,
@@ -458,7 +461,7 @@ function renameOnDB(newname,oldname,compname){
 	form_data.append('compname',compname);
 	$.ajax({
 	 type: "POST",
-	 url:addr_server+"db_update.php",
+	 url:addr_server_update,
 	 data: form_data,
 	 cache: false,
 	 processData: false,
