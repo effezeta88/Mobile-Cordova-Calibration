@@ -17,9 +17,9 @@
  * under the License.
  */
 
-addr_server_insert="http://35.156.230.193/db_insert.php";
-addr_server_select="http://35.156.230.193/db_select.php";
-addr_server_update="http://35.156.230.193/db_update.php";
+addr_server_insert="http://ip_addr/db_insert.php";
+addr_server_select="http://ip_addr/db_select.php";
+addr_server_update="http://ip_addr/db_update.php";
 
 json_add=[];
 json_add_new=[];
