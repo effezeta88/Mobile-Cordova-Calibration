@@ -16,7 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-addr_ip="localhost";
+
+
+
 addr_server_insert="http://"+addr_ip+"/db_insert.php";
 addr_server_select="http://"+addr_ip+"/db_select.php";
 addr_server_update="http://"+addr_ip+"/db_update.php";
@@ -31,6 +33,7 @@ parentDiv=document.getElementById("list_area");
 parentDiv_mod=document.getElementById("list_area_mod");
 wrapper=document.getElementById("wrapper");
 wrapper_mod=document.getElementById("wrapper_mod");
+
 complete=true;
 obj_tosave=[];
 obj_tomodify=[];
@@ -141,6 +144,7 @@ function uploadDB(){
 
 			if(json_add.length>0)
 				json_envio = create_json("2",json_add);
+			send_webservice();
 			console.log(json_envio);
 			empty_array();
 			resetAll();
@@ -252,6 +256,20 @@ function getMax(arr, prop) {
     return max;
 }
 
+function send_webservice(){
+	$.ajax({
+		 type: "POST",
+		 url: web_service,
+		 data: JSON.stringify(json_envio),
+		 cache: false,
+		 processData: false,
+    	 	 contentType: false,
+  		 dataType: "json",
+		 success : function(result){
+			console.log("sent to web service");
+		}
+	});
+}
 function get_scanNumber(scan_num){
 		//upload(fileEntry.toURL());
 		var form_data = new FormData();
@@ -526,6 +544,7 @@ function deleteOnDB(areaname,compname){
  	 success: function(result){
 		coreToasts.create('Area Deleted',null,3000);
 		json_envio = create_json("4",json_del);
+		send_webservice();
 		console.log(json_envio);
 		_showArea();
 	 },
@@ -559,6 +578,7 @@ function renameOnDB(newname,oldname,compname){
  	 	console.log(result);
 		coreToasts.create('Area Renamed',null,3000);
 		json_envio = create_json("3",json_ren);
+		send_webservice();
 		console.log(json_envio);
 		_showArea();
 	 },
