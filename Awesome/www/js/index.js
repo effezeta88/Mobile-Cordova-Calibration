@@ -16,10 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
-addr_server_insert="http://ip_addr/db_insert.php";
-addr_server_select="http://ip_addr/db_select.php";
-addr_server_update="http://ip_addr/db_update.php";
+addr_ip="localhost";
+addr_server_insert="http://"+addr_ip+"/db_insert.php";
+addr_server_select="http://"+addr_ip+"/db_select.php";
+addr_server_update="http://"+addr_ip+"/db_update.php";
 
 json_add=[];
 json_add_new=[];
@@ -271,7 +271,7 @@ function get_scanNumber(scan_num){
 			if((result[0]['max(scantime)'])!=""){
 				swap_scan(result[0]['max(scantime)']);
 			}
-			incrementa(scan_num);
+			incrementa();
 			get_Areaid();
 	  	 },
 	  	 error: function(d){
@@ -338,7 +338,7 @@ function _clear(){
 function onError_GEO_err(){
 	coreToasts.create('Error with geolocalization',null,3000);
 }
-function incrementa(scan_num){
+function incrementa(){
 	scan_num=scan_num+1;
 }
 function swap_scan(x){

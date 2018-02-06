@@ -271,7 +271,8 @@ function get_scanNumber(scan_num){
 			if((result[0]['max(scantime)'])!=""){
 				swap_scan(result[0]['max(scantime)']);
 			}
-			incrementa(scan_num);
+			incrementa();
+			console.log(scan_num);
 			get_Areaid();
 	  	 },
 	  	 error: function(d){
@@ -338,7 +339,7 @@ function _clear(){
 function onError_GEO_err(){
 	coreToasts.create('Error with geolocalization',null,3000);
 }
-function incrementa(scan_num){
+function incrementa(){
 	scan_num=scan_num+1;
 }
 function swap_scan(x){

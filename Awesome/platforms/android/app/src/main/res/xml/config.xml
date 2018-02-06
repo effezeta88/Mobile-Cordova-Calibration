@@ -39,12 +39,11 @@
         <param name="android-package" value="cordova.plugins.Diagnostic" />
         <param name="onload" value="true" />
     </feature>
-    <name>Localisation</name>
+    <name>IMHERE</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        A sample Apache Cordova application that allow you to detect different area and labeled them.
     </description>
     <author email="fzola@vicomtech.org" href="http://effezeta88">
-        Vicomtech
     </author>
     <content src="index.html" />
     <access origin="*" />
