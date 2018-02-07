@@ -16,8 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 addr_ip="35.156.230.193";
-web_service="http://35.156.230.193/brickandclick/index.php?controller=setdatoswifi&module=zonawifi&fc=module"
+web_service="http://35.156.230.193/brickandclick/index.php?controller=setdatoswifi&module=zonawifi&fc=module";
+
 addr_server_insert="http://"+addr_ip+"/db_insert.php";
 addr_server_select="http://"+addr_ip+"/db_select.php";
 addr_server_update="http://"+addr_ip+"/db_update.php";
@@ -36,14 +38,13 @@ wrapper_mod=document.getElementById("wrapper_mod");
 complete=true;
 obj_tosave=[];
 obj_tomodify=[];
-//file_tosave=[];
 db_returned=[];
 gps_=[];
 scan_time=15000;
 scan_num=0;
 id_area=-1;
 var loc_enabled;
-//index_change=-1;
+var myTimout=0;
 wrapper.style.visibility = "hidden"; 
 wrapper_mod.style.visibility = "hidden"; 
 
@@ -88,15 +89,18 @@ function writeFile(fileEntry, data) {
 }
 
 function _save(){
-	finish_scan();
-	clearTimeout(myTimout);
-	wrapper_mod.style.visibility = "hidden"; 
-	if(obj_tosave.length==0){
-		coreToasts.create('No data to store',null,3000);
+	if(complete){
+		wrapper_mod.style.visibility = "hidden"; 
+		if(obj_tosave.length==0){
+			coreToasts.create('No data to store',null,3000);
+		}
+		else{
+			uploadDB();
+		}
 	}
 	else{
-		uploadDB();
-	}
+		coreToasts.create('Stop the scanning before',null,3000);	
+	}	
  	/*window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dir) {
 
 	    dir.getFile("calibration_file.txt", { create: true}, function (fileEntry) {
@@ -119,7 +123,7 @@ function uploadFile(fileURL){
 	ft.upload(fileURL, encodeURI(addr_server+"home/ubuntu/upload.php"), onSuccess_UPL, onError_UPL,options);
 }
 function remove_bar_load(){
-	var item_to_remove = document.getElementById("loader");
+	var item_to_remove = document.getElementById("cell_div");
 	if(item_to_remove!=null){
 		parentDiv.removeChild(item_to_remove);
 	}
@@ -134,7 +138,7 @@ function uploadDB(){
 		 data: form_data,
 		 cache: false,
 		 processData: false,
-    	 contentType: false,
+    	 	 contentType: false,
   		 dataType: "json",
 	 	 success : function(d){
 			coreToasts.create('Data stored',null,3000);
@@ -177,57 +181,127 @@ function empty_array(){
     		obj_tosave.pop();
 	}
 }
-function _stopLocalisation(){
-	finish_scan();
-	remove_bar_load();
-	clearTimeout(myTimout);
+function _stopLocalization(){
+	if(!complete){
+		localization(false);
+		remove_bar_load();
+		finish_scan();
+		clearTimeout(myTimeout);
+	}
+	
 	wrapper_mod.style.visibility = "hidden"; 
 }
-function _fillList(gps_){
-	obj_tosave.push({"company":com_name.textContent,"area":area_name.value,"idarea":id_area,"tmac":tmac.value,"latitude":gps_[0],"longitude":gps_[1],"timestamp":tt,"num":scan_num});
+function _fillList(gps_,start){
+	obj_tosave.push({"company":com_name.textContent,"area":area_name.value,"idArea":id_area,"tmac":tmac.value,"latitude":gps_[0],"longitude":gps_[1],"timestamp":tt,"num":scan_num});
+	console.log({"company":com_name.textContent,"area":area_name.value,"idArea":id_area,"tmac":tmac.value,"latitude":gps_[0],"longitude":gps_[1],"timestamp":tt,"num":scan_num});
+	_createItem(obj_tosave,start);
+	
 	//file_tosave.push({"company":com_name.textContent,"area":area_name.value,"tmac":tmac.value,"latitude":gps_[0],"longitude":gps_[1],"timestamp":tt,"num":num.value});
-	console.log({"company":com_name.textContent,"area":area_name.value,"idarea":id_area,"tmac":tmac.value,"latitude":gps_[0],"longitude":gps_[1],"timestamp":tt,"num":scan_num});
-	remove_bar_load();
+}
+
+function _createItem(obj_tosave,x){
 	var div = document.createElement('div');
 	div.setAttribute('class','div-example');
 	var li = document.createElement('li');
 	li.setAttribute('class','list-item with-second-label');
 	var span = document.createElement('span');
 	span.setAttribute('class','label');
-	span.innerHTML= "Area: "+area_name.value;
+	if(x){
+		span.innerHTML= "Start Scanning ---> ";
+	}
+	else{
+		span.innerHTML= "End Scanning ---> ";
+	}
+	span.innerHTML= span.innerHTML+"Area: "+obj_tosave[obj_tosave.length-1]['area'];
 	var secspan = document.createElement('span');
-	secspan.innerHTML= tt;
+	secspan.innerHTML= obj_tosave[obj_tosave.length-1]['timestamp'];
 	secspan.setAttribute('class','second-label');			
 	li.appendChild(span);
 	li.appendChild(secspan);
 	div.appendChild(li);	
 	parentDiv.appendChild(div);
-	var div_line = document.createElement('div');
-	div_line.setAttribute('class','div-line');	
-	parentDiv.appendChild(div_line);
-	var div = document.createElement('div');
-	div.setAttribute('data-role','progress');
-	div.setAttribute('data-type','circle');
-	div.setAttribute('class','prog-b');
-
-	div.id="loader";
-	parentDiv.appendChild(div);
+	if(x){
+		var div_line = document.createElement('div');
+		div_line.setAttribute('class','div-line');	
+		parentDiv.appendChild(div_line);
+		var div_cell = document.createElement('div');
+		div_cell.id="cell_div";
+		div_cell.setAttribute('class','prog-b');
+		var div_count = document.createElement('div');
+		div_count.id="count";
+		div_count.setAttribute('class','counter-div');
+		div_count.innerHTML="00:00:01";
+		var div = document.createElement('div');
+		div.setAttribute('data-role','progress');
+		div.setAttribute('data-type','circle');
+		div.setAttribute('class','prog-b');
+		div.id="loader";
+		div_cell.appendChild(div_count);
+		//div_cell.appendChild(div);
+		parentDiv.appendChild(div_cell);
+		myTimout = setTimeout(myclock, 1000);
+	}else{
+		var div_line = document.createElement('div');
+		div_line.setAttribute('class','div-line-end');	
+		parentDiv.appendChild(div_line);
+	}
 }
+function myclock(){
+	var div_count=document.getElementById("count");
+	var str=div_count.innerHTML;
+	var res = str.split(":");
+	a=parseInt(res[2])+1;
+	b=parseInt(res[1]);
+	c=parseInt(res[0]);
+	if(a%60==0){
+		a=0;
+		b=b+1;
+		if(b%60==0){
+			b=0;
+			c=c+1;
+			if(c%60==0){
+				c=0;
+			}
+		}
+	}
+	res[2]=a.toString();
+	res[1]=b.toString();
+	res[0]=c.toString();
+	
+	space="";
+	long_string="";
+	if(res[0].length==1)
+		space="0";
+	long_string=space+res[0]+":";
+
+	space="";
+	if(res[1].length==1)
+		space="0";
+	long_string=long_string+space+res[1]+":";
+
+	space="";
+	if(res[2].length==1)
+		space="0";
+	long_string=long_string+space+""+res[2];
+
+	div_count.innerHTML=long_string;
 
 
-function onSuccess_GEO(position) {
+	myTimout = setTimeout(myclock, 1000);
+}
+function onSuccess_GEO(position,start) {
 	gps_[0]= position.coords.latitude;
 	gps_[1]= position.coords.longitude;
-	_fillList(gps_);
+	_fillList(gps_,start);
 }
  
-function onError_GEO(error) {
+function onError_GEO(start) {
 	gps_[0]= -1;
 	gps_[1]= -1;
-	_fillList(gps_);
+	_fillList(gps_,start);
 }
 
-function _startLocalisation(){
+function _startLocalization(){
     successCallback(false);
     //cordova.plugins.diagnostic.isLocationEnabled(successCallback, errorCallback);
 	if(complete){
@@ -271,30 +345,35 @@ function send_webservice(){
 }
 function get_scanNumber(scan_num){
 		//upload(fileEntry.toURL());
-		var form_data = new FormData();
-		form_data.append('funct','getjustnumber');		
-		form_data.append('c_name',com_name.textContent);
-		form_data.append('area_name',area_name.value);
-		$.ajax({
-		 type: "POST",
-		 url: addr_server_select,
-		 data: form_data,
-		 cache: false,
-		 processData: false,
-    	 	contentType: false,
-  		 dataType: "json",
-	 	 success : function(result){
-			//num=getMax(result,'scantime');
-			if((result[0]['max(scantime)'])!=""){
-				swap_scan(result[0]['max(scantime)']);
-			}
+		if(obj_tosave.length>0){
+			swap_scan(obj_tosave[obj_tosave.length-1]['num']);
 			incrementa();
 			get_Areaid();
-	  	 },
-	  	 error: function(d){
-			coreToasts.create('Error, data not retrieved',null,3000);
-	  	 }
-	});
+		}else{
+			var form_data = new FormData();
+			form_data.append('funct','getjustnumber');		
+			form_data.append('c_name',com_name.textContent);
+			$.ajax({
+				 type: "POST",
+				 url: addr_server_select,
+				 data: form_data,
+				 cache: false,
+				 processData: false,
+		    	 	 contentType: false,
+		  		 dataType: "json",
+			 	 success : function(result){
+					//num=getMax(result,'scantime');
+					if((result[0]['tmax'])!=""){
+						swap_scan(result[0]['tmax']);
+					}
+					incrementa();
+					get_Areaid();
+			  	 },
+			  	 error: function(d){
+					coreToasts.create('Error on Server, try again',null,3000);
+			  	 }
+			});
+		}
 }
 
 function get_Areaid(){
@@ -320,34 +399,44 @@ function get_Areaid(){
 					//console.log("swap "+id_area);
 				}
 			}
+			if(id_area==-1 && obj_tosave.length>0){
+				for(var i=0 ; i<obj_tosave.length ; i++) {
+					if((obj_tosave[i]['area'])==area_name.value){
+						swap_id(obj_tosave[i]['idArea']);
+					}
+				}
+			}
 			if(id_area==-1){
-				id_area=getArea(result,'idArea');
+				id_area=getArea(result,obj_tosave,'idArea');
 				isnewarea=true;
-				//console.log("noswap "+id_area);		
 			}
 			if(isnewarea){
-   	 	             json_add_new.push({"company":com_name.textContent,"area":area_name.value,"idarea":id_area,"mac":tmac.value});			
+   	 	             json_add_new.push({"company":com_name.textContent,"area":area_name.value,"idArea":id_area,"mac":tmac.value});			
 			}
 			else{    			
-			      json_add.push({"company":com_name.textContent,"area":area_name.value,"idarea":id_area,"mac":tmac.value});
+			      json_add.push({"company":com_name.textContent,"area":area_name.value,"idArea":id_area,"mac":tmac.value});
 			}
 			//console.log("newarea "+id_area);		
-			localisation();
+			localization(true);
 	  	 },
 	  	 error: function(d){
-			coreToasts.create('Error, data not retrieved',null,3000);
+			coreToasts.create('Error on Server, try again',null,3000);
 	  	 }
 	});
 }
 
 function _clear(){
-	resetAll();
-	remove_bar_load();
-	wrapper.style.visibility = "hidden"; 
-	wrapper_mod.style.visibility = "hidden"; 
-	finish_scan()
-	clearTimeout(myTimout);
-	empty_array();
+	if(complete){
+		resetAll();
+		remove_bar_load();
+		wrapper.style.visibility = "hidden"; 
+		wrapper_mod.style.visibility = "hidden"; 
+		finish_scan()
+		empty_array();
+	}
+	else{
+		coreToasts.create('Stop the scanning before',null,3000);	
+	}
 	//file_tosave=[];
 	    
 
@@ -364,29 +453,30 @@ function swap_scan(x){
 function swap_id(x){
 	id_area=parseInt(x);
 }
-function localisation(){
+function localization(start){
 	tt= new Date()
 	gps_=[-1,-1];
 	if(loc_enabled){
-		navigator.geolocation.getCurrentPosition(onSuccess_GEO, onError_GEO_err);
+		navigator.geolocation.getCurrentPosition(onSuccess_GEO(start), onError_GEO_err);
 	}
 	else{
-		onError_GEO();
+		onError_GEO(start);
 	}
-	myTimout=setTimeout(function(){
-		if(!complete){
-			localisation();
-		}
-	},scan_time);
 }
-function getArea(arr,prop) {
+function getArea(arr,arr2,prop) {
     var idx=0;
+    test=[];
+    test=arr;
+    if(arr2.length>0){
+	    for (var i=0 ; i<arr2.length ; i++) {
+	    	test.push(arr2[i]);
+	    }
+    }
     found=false;
     while(!found){
-
 	found=true;
-	for (var i=0 ; i<arr.length ; i++) {
-		if(arr[i][prop]==idx){
+	for (var i=0 ; i<test.length ; i++) {
+		if(test[i][prop]==idx){
 			found=false;
 		}
 	}
@@ -396,12 +486,13 @@ function getArea(arr,prop) {
     }
     return idx;
 }
+
 function _showArea(){
 	remove_bar_load();
 	resetAll();
 	index_change=-1;
 	while(obj_tomodify.length > 0) {
-    	obj_tomodify.pop();
+    		obj_tomodify.pop();
 	}
 	var form_data = new FormData();
 	form_data.append('funct','getareaname');		
@@ -427,7 +518,7 @@ function _showArea(){
 			}
 			else{
 				for (var i=0 ; i<result.length ; i++) {
-					obj_tomodify.push({"idarea":result[i]['idArea'],"area":result[i]['Area'],"company":result[i]['Company'],"idli":'li'+i});
+					obj_tomodify.push({"idArea":result[i]['idArea'],"area":result[i]['Area'],"company":result[i]['Company'],"idli":'li'+i});
 	 				var li = document.createElement('li');
 	   				li.setAttribute('class','list-item with-second-label');
 	 				var span = document.createElement('span');
@@ -479,7 +570,7 @@ function _deleteArea(){
 			{
 			    	title: "Ok",
 			    	onclick: function(el){
-				json_del.push({"company":obj_tomodify[index_change]['company'],"area":obj_tomodify[index_change]['area'], "idarea":obj_tomodify[index_change]['idarea']});
+				json_del.push({"company":obj_tomodify[index_change]['company'],"area":obj_tomodify[index_change]['area'], "idArea":obj_tomodify[index_change]['idArea']});
 					deleteOnDB(obj_tomodify[index_change]['area'],obj_tomodify[index_change]['company']);
 				},
 		   		cls: "js-dialog-close",
@@ -508,7 +599,7 @@ function _renameArea(){
 			    onclick: function(el){
 					new_name=document.getElementById("new_name").value;
 					if (new_name!=""){
-						json_ren.push({"company":obj_tomodify[index_change]['company'],"area":obj_tomodify[index_change]['area'], "idarea":obj_tomodify[index_change]['idarea'],"newname":new_name});
+						json_ren.push({"company":obj_tomodify[index_change]['company'],"area":obj_tomodify[index_change]['area'], "idArea":obj_tomodify[index_change]['idArea'],"newname":new_name});
 						renameOnDB(new_name,obj_tomodify[index_change]['area'],obj_tomodify[index_change]['company']);
 					}
 			    },

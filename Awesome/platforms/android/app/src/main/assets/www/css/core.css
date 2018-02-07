@@ -6024,8 +6024,28 @@ header.more ~ .fixed-tabs,
     margin: auto;
     padding: 0;
 }
+.div-line-end {
+    display: block;
+    height: 1px;
+    width: 75%;
+    border: 0;
+    border-top: 1px solid #000;
+    margin: auto;
+    padding: 0;
+}
 .prog-b{
-    margin:auto;
+    margin: auto;
+    width: 100%;
+    border: 3px solid green;
+    padding: 10px;
+}
+.counter-div{
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+
 }
 .form-data{
   border: 1px dotted #009688;
