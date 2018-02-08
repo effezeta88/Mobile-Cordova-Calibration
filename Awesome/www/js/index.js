@@ -17,8 +17,7 @@
  * under the License.
  */
 
-addr_ip="35.156.230.193";
-web_service="http://35.156.230.193/brickandclick/index.php?controller=setdatoswifi&module=zonawifi&fc=module"
+
 
 addr_server_insert="http://"+addr_ip+"/db_insert.php";
 addr_server_select="http://"+addr_ip+"/db_select.php";
