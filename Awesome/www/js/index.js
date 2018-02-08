@@ -17,7 +17,8 @@
  * under the License.
  */
 
-
+addr_ip="35.156.230.193";
+web_service="http://35.156.230.193/brickandclick/index.php?controller=setdatoswifi&module=zonawifi&fc=module"
 
 addr_server_insert="http://"+addr_ip+"/db_insert.php";
 addr_server_select="http://"+addr_ip+"/db_select.php";
@@ -307,7 +308,6 @@ function _startLocalization(){
 		if(area_name.value!="" && tmac.value!=""){
 			wrapper.style.visibility = "visible";
 			wrapper_mod.style.visibility = "hidden"; 
-			start_scan();
 			get_scanNumber(scan_num);
 		}
 		else{
@@ -347,6 +347,7 @@ function get_scanNumber(scan_num){
 		if(obj_tosave.length>0){
 			swap_scan(obj_tosave[obj_tosave.length-1]['num']);
 			incrementa();
+			start_scan();
 			get_Areaid();
 		}else{
 			var form_data = new FormData();
@@ -366,6 +367,7 @@ function get_scanNumber(scan_num){
 						swap_scan(result[0]['tmax']);
 					}
 					incrementa();
+					start_scan();
 					get_Areaid();
 			  	 },
 			  	 error: function(d){
@@ -373,6 +375,35 @@ function get_scanNumber(scan_num){
 			  	 }
 			});
 		}
+}
+function get_AreaFind(_name){
+		var form_data = new FormData();
+		form_data.append('funct','getareaname');		
+		form_data.append('c_name',com_name.textContent);
+		$.ajax({
+		 type: "POST",
+		 url: addr_server_select,
+		 data: form_data,
+		 cache: false,
+		 processData: false,
+    	 	 contentType: false,
+  		 dataType: "json",
+	 	 success : function(result){
+ 			b_find=false;
+			for (var i=0 ; i<result.length ; i++) {
+				if((result[i]['Area'])==_name){
+					 b_find=true;
+				}
+			}
+			if (new_name!="" && !b_find){
+				json_ren.push({"company":obj_tomodify[index_change]['company'],"area":obj_tomodify[index_change]['area'], "idArea":obj_tomodify[index_change]['idArea'],"newname":new_name});
+				renameOnDB(new_name,obj_tomodify[index_change]['area'],obj_tomodify[index_change]['company']);
+			}
+			else{
+				coreToasts.create('Name empty or already in use',null,3000);
+			}
+		 }
+	});
 }
 
 function get_Areaid(){
@@ -597,10 +628,7 @@ function _renameArea(){
 			    title: "Ok",
 			    onclick: function(el){
 					new_name=document.getElementById("new_name").value;
-					if (new_name!=""){
-						json_ren.push({"company":obj_tomodify[index_change]['company'],"area":obj_tomodify[index_change]['area'], "idArea":obj_tomodify[index_change]['idArea'],"newname":new_name});
-						renameOnDB(new_name,obj_tomodify[index_change]['area'],obj_tomodify[index_change]['company']);
-					}
+					get_AreaFind(new_name);
 			    },
 			    cls: "js-dialog-close",
 			    removeOnClose: true
@@ -614,7 +642,7 @@ function _renameArea(){
 		});
 	}
 	else{
-    	coreToasts.create('No Area Selected',null,3000);
+    		coreToasts.create('No Area Selected',null,3000);
     }
 }
 function deleteOnDB(areaname,compname){
